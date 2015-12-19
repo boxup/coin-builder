@@ -2,7 +2,7 @@
 # 
 # Docker base for building coin daemons 
 #
-FROM ubuntu:12.10
+FROM ubuntu:14.04
 MAINTAINER Boxup
 
 # deal with installation warnings
@@ -22,13 +22,13 @@ RUN dpkg-divert --local --rename --add /sbin/initctl
 RUN aptitude install -y build-essential libtool autotools-dev autoconf libssl-dev unzip yasm zip pkg-config checkinstall
 
 # Libraries required for building.
-RUN aptitude install -y libdb5.1-dev libdb5.1++-dev libboost-all-dev
+RUN aptitude install -y libdb5.1-dev libdb5.1++-dev libboost-all-dev libcurl4-openssl-dev libgmp-dev libminiupnpc-dev
 
 # Gold linker is much faster than standard linker.
 RUN apt-get install -y binutils-gold
 
 # Developer tools.
-RUN apt-get install -y bash-completion curl emacs git man-db python-dev python-pip vim
+RUN apt-get install -y bash-completion curl git man-db python-dev python-pip
 
 # Now let's build bitcoin
 VOLUME /data/buildOutput
