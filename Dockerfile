@@ -3,7 +3,7 @@
 # Docker base for building coin daemons 
 #
 FROM ubuntu:12.10
-MAINTAINER dasher
+MAINTAINER Boxup
 
 # deal with installation warnings
 ENV TERM xterm
